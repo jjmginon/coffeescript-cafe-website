@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoffeeScript Café — Home</title>
+    <meta name="description"
+        content="CoffeeScript Café — your daily dose of code and caffeine. Enjoy high-quality, precision-brewed coffee crafted to energize developers, refresh routines, and fuel creativity. Start your order today and optimize your workflow with every sip.">
+    <meta name="author" content="JJ Ginon">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Raleway", Arial, sans-serif;
+            background: linear-gradient(to bottom, #1F140D, #9B8074);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 0.625rem 1.25rem;
+            background: linear-gradient(to bottom, #1F140D, #291D16);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .header__img {
+            width: 45px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .header__h1 {
+            font-size: 1.5rem;
+            font-family: "Fira Sans Condensed", sans-serif;
+            font-weight: 500;
+            color: #f9f6ed;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0 2.5rem;
+        }
+
+        .main__article {
+            width: 100%;
+            margin: 5rem auto;
+            color: #f9f6ed;
+            text-align: center;
+        }
+
+        .article__img {
+            aspect-ratio: 1/1;
+            width: 260px;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 4px;
+        }
+
+        .article__h2 {
+            margin: 1rem 0;
+            font-size: 2rem;
+            line-height: 1.5;
+        }
+
+        .article__p {
+            margin-bottom: 1rem;
+            font-weight: 300;
+            text-align: justify;
+        }
+
+        .article__button {
+            margin-top: 1rem;
+            padding: 0.625rem 1.25rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            background: #f9f6ed;
+            cursor: pointer;
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;500&family=Raleway:wght@300;600&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;500&family=Raleway:wght@300;600&display=swap">
+    </noscript>
+
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__div logo-container">
+                <img class="header__img" src="img/logo/coffeescript-cafe-logo-transparent-300x249.webp"
+                    alt="CoffeeScript Café logo" width="300" height="249" fetchpriority="high">
+                <h1 class="header__h1">CoffeeScript Café</h1>
+            </div>
+            <div class="header__div nav-container">
+                <button id="close-menu-btn" aria-label="Close menu" aria-controls="primary-nav" aria-expanded="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+                <ul id="primary-nav" class="header__ul">
+                    <li><a class="header__a" href="/">Home</a></li>
+                    <li><a class="header__a" href="menu.html">Menu</a></li>
+                    <li><a class="header__a" href="about.html">About</a></li>
+                    <li><a class="header__a" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <button id="menu-btn" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main home">
+        <article id="#" class="main__article">
+            <figure class="article__figure">
+                <img class="article__img" src="img/home/coffee-hero-img-1024x1024.webp"
+                    srcset="img/home/coffee-hero-img-300x300.webp 300w, img/home/coffee-hero-img-1024x1024.webp 1024w"
+                    sizes="(max-width: 600px) 300px, 1024px" alt="An image of a cup of coffee"
+                    title="CoffeeScript Café — your daily dose of code and caffeine" width="1024" height="1024"
+                    fetchpriority="high">
+                <figcaption class="sr-only">
+                    CoffeeScript Café &mdash; fuel for developers, optimized like clean code and scalable systems
+                </figcaption>
+
+            </figure>
+            <div class="article__div">
+                <h2 class="article__h2">Cup of High-Quality Coffee</h2>
+                <p class="article__p">
+                    Our high-quality coffee beans compile excellence in aroma, flavor, and freshness: each sip executes
+                    a rich aftertaste that debugs fatigue, refreshes your system, and optimizes your routine.
+                </p>
+                <p class="article__p"> Each brew is engineered with precision—balanced like clean code, scalable like
+                    modern frameworks, and designed to deliver peak performance for both mind and body. Whether you're
+                    refactoring ideas or launching new projects, our coffee keeps your workflow running smoothly. </p>
+                <button class="article__button">
+                    Start Your Order
+                </button>
+            </div>
+        </article>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoffeeScript Café — Our Menu</title>
+    <meta name="description"
+        content="Explore the CoffeeScript Café menu — from Java Coffee and Tea++ to Byte-Blend Frappe and BubbleSort Milk Tea. Each drink is crafted with code-inspired creativity, premium ingredients, and algorithmic precision to fuel your day.">
+    <meta name="author" content="JJ Ginon">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Raleway", Arial, sans-serif;
+            background: linear-gradient(to bottom, #1F140D, #9B8074);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 0.625rem 1.25rem;
+            background: linear-gradient(to bottom, #1F140D, #291D16);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .header__img {
+            width: 45px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .header__h1 {
+            font-size: 1.5rem;
+            font-family: "Fira Sans Condensed", sans-serif;
+            font-weight: 500;
+            color: #f9f6ed;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0 2.5rem;
+        }
+
+        .main__article {
+            width: 100%;
+            margin: 5rem auto;
+            color: #f9f6ed;
+            text-align: center;
+        }
+
+        .article__img {
+            aspect-ratio: 1/1;
+            width: 260px;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 4px;
+        }
+
+        .article__h2 {
+            margin: 1rem 0;
+            font-size: 2rem;
+            line-height: 1.5;
+        }
+
+        .article__p {
+            margin-bottom: 1rem;
+            font-weight: 300;
+            text-align: justify;
+        }
+
+        .article__button {
+            margin-top: 1rem;
+            padding: 0.625rem 1.25rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            background: #f9f6ed;
+            cursor: pointer;
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@500&family=Raleway:wght@300;600&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@500&family=Raleway:wght@300;600&display=swap">
+    </noscript>
+
+    <link rel="preload" as="image" href="img/coffee-1024x1024.webp">
+
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__div logo-container">
+                <img class="header__img" src="img/logo/coffeescript-cafe-logo-transparent-300x249.webp"
+                    alt="CoffeeScript Café logo" width="300" height="249" fetchpriority="high">
+                <h1 class="header__h1">CoffeeScript Café</h1>
+            </div>
+            <div class="header__div nav-container">
+                <button id="close-menu-btn" aria-label="Close menu" aria-controls="primary-nav" aria-expanded="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+                <ul id="primary-nav" class="header__ul">
+                    <li><a class="header__a" href="/">Home</a></li>
+                    <li><a class="header__a" href="menu.html">Menu</a></li>
+                    <li><a class="header__a" href="about.html">About</a></li>
+                    <li><a class="header__a" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <button id="menu-btn" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <article id="menu" class="main__article menu">
+            <h2 class="article__h2 product__h2">Our Menu</h2>
+            <div class="menu__div">
+                <div class="container__div card" tabindex="0">
+                    <div class="card__div product">
+                        <img class="product__img" src="img/coffee/coffee-1024x1024.webp"
+                            srcset="img/coffee/coffee-300x300.webp 300w, img/coffee/coffee-1024x1024.webp 1024w"
+                            sizes="(max-width: 600px) 300px, 1024px" alt="coffeeScript Coffee" width="1024"
+                            height="1024" fetchpriority="high">
+                    </div>
+                    <div class="card__div item">
+                        <h3 class="item__h3">Java Coffee</h3>
+                        <p class="item__p">
+                            Unlock your code wizardry with our Java Blend&#8212;a symphony of dark-roasted beans and a
+                            subtle hint of vanilla bytecode. Each sip fuels your algorithms, turning lines of code into
+                            poetry.
+                        </p>
+
+                        <p class="item__p price">₱120</p>
+                    </div>
+                </div>
+
+                <div class="container__div card" tabindex="0">
+                    <div class="card__div product">
+                        <img class="product__img" src="img/tea/tea-1024x1024.webp"
+                            srcset="img/tea/tea-300x300.webp 300w, img/tea/tea-1024x1024.webp 1024w"
+                            sizes="(max-width: 600px) 300px, 1024px" alt="coffeeScript Tea" width="1024" height="1024"
+                            loading="lazy">
+                    </div>
+                    <div class="card__div item">
+                        <h3 class="item__h3">Tea++</h3>
+                        <p class="item__p">
+                            Boost your code with our Tea++&#8212;a premium green tea blend that sharpens focus and
+                            swiftly banishes bugs. Sip on the secret weapon that keeps your mind agile and your syntax
+                            error-free.
+                        </p>
+
+                        <p class="item__p price">₱80</p>
+                    </div>
+                </div>
+
+                <div class="container__div card" tabindex="0">
+                    <div class="card__div product">
+                        <img class="product__img" src="img/frappe/frappe-1024x1024.webp"
+                            srcset="img/frappe/frappe-300x300.webp 300w, img/frappe/frappe-1024x1024.webp 1024w"
+                            sizes="(max-width: 600px) 300px, 1024px" alt="coffeeScript Frappe" width="1024"
+                            height="1024" loading="lazy">
+                    </div>
+                    <div class="card__div item">
+                        <h3 class="item__h3">Byte-Blend Frappe</h3>
+                        <p class="item__p">
+                            Fuel your code with our Byte-Blend Frappe&#8212;a creamy concoction topped with a binary bit
+                            of chocolate crunch. Perfect syntax for your system, guaranteed to debug your brain and
+                            refresh.
+                        </p>
+
+                        <p class="item__p price">₱160</p>
+                    </div>
+                </div>
+
+                <div class="container__div card" tabindex="0">
+                    <div class="card__div product">
+                        <img class="product__img" src="img/bubble-tea/bubble-tea-1024x1024.webp"
+                            srcset="img/bubble-tea/bubble-tea-300x300.webp 300w, img/bubble-tea/bubble-tea-1024x1024.webp 1024w"
+                            sizes="(max-width: 600px) 300px, 1024px" alt="BubbleSort Milk Tea with tapioca pearls"
+                            width="1024" height="1024" loading="lazy">
+                    </div>
+                    <div class="card__div item">
+                        <h3 class="item__h3">BubbleSort Milk Tea</h3>
+                        <p class="item__p">
+                            Smooth, creamy milk tea with chewy tapioca pearls—sorted to perfection. A balanced,
+                            refreshing sip to keep your flow clean and your focus sharp with algorithmic precision.
+                        </p>
+                        <p class="item__p price">₱130</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <button id="backToTop" aria-label="Back to top">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor"
+                preserveAspectRatio="xMidYMid meet">
+                <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z" />
+            </svg>
+        </button>
+    </main>
+</body>
+
+</html>
