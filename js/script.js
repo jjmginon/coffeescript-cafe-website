@@ -42,3 +42,12 @@ if (backToTop) {
 
     window.addEventListener("load", toggleBackToTop);
 }
+
+// ===== ESCAPE KEY CLOSE BEHAVIOR =====
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && header.classList.contains("show-mobile-menu")) {
+        header.classList.remove("show-mobile-menu");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.focus();
+    }
+});
