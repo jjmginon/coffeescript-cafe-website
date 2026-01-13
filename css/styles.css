@@ -21,6 +21,47 @@ textarea {
     font: inherit;
 }
 
+/* || VARIABLES */
+
+:root {
+    /* FONTS */
+    --FF: "Raleway", Arial, sans-serif;
+    --FF-HEADINGS: "Fira Sans Condensed", sans-serif;
+
+    /* COLORS */
+    --BODY-BGCOLOR: #1F140D;
+    --BODY-BGCOLOR-FADE: #9B8074;
+    --BODY-BGIMAGE: linear-gradient(to bottom, var(--BODY-BGCOLOR), var(--BODY-BGCOLOR-FADE));
+
+    --BUTTON-COLOR: #F9F6ED;
+    --BUTTON-BGCOLOR: #F9F6ED;
+    --BUTTON-HOVER: hsl(23, 35%, 60%);
+    --BUTTON-ACTIVE: hsl(23, 35%, 35%);
+
+    --CARD-COLOR: #101010;
+
+    --FONT-COLOR: #F9F6ED;
+
+    --HEADER-BGCOLOR: #1F140D;
+    --HEADER-BGCOLOR-FADE-SM: #291D16;
+    --HEADER-BGCOLOR-FADE-L: #32241C;
+    --HEADER-BGIMAGE-SM: linear-gradient(to bottom, var(--HEADER-BGCOLOR), var(--HEADER-BGCOLOR-FADE-SM));
+    --HEADER-BGIMAGE-L: linear-gradient(to bottom, var(--HEADER-BGCOLOR), var(--HEADER-BGCOLOR-FADE-L));
+
+    --LINK-COLOR: #F9F6ED;
+    --LINK-HOVER-SM: hsl(23, 35%, 35%);
+    --LINK-HOVER-L: hsl(23, 35%, 65%);
+    --LINK-ACTIVE: hsl(23, 35%, 35%);
+
+    --NAV-BGCOLOR: #F9F6ED;
+    --NAV-COLOR: #101010;
+    --NAV-CLOSE-BUTTON-COLOR: #101010;
+    --NAV-CLOSE-BUTTON-HOVER: hsl(23, 35%, 35%);
+
+    /* BORDERS */
+    --BORDER-RADIUS: 4px;
+}
+
 /* || UTILITY CLASSES */
 .sr-only {
     position: absolute;
@@ -41,9 +82,10 @@ html {
 
 body {
     min-height: 100vh;
-    font-family: "Raleway", Arial, sans-serif;
+    font-family: var(--FF);
     font-size-adjust: 0.5;
-    background: linear-gradient(to bottom, #1F140D, #9B8074);
+    color: var(--FONT-COLOR);
+    background: linear-gradient(to bottom, var(--BODY-BGCOLOR), var(--BODY-BGCOLOR-FADE));
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -54,16 +96,16 @@ body::before {
     position: fixed;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(to bottom, #1F140D, #9B8074);
+    background: linear-gradient(to bottom, var(--BODY-BGCOLOR), var(--BODY-BGCOLOR-FADE));
 }
 
 a:any-link {
-    color: #f9f6ed;
+    color: var(--LINK-COLOR);
     text-decoration: none;
 }
 
 img {
-    border-radius: 4px;
+    border-radius: var(--BORDER-RADIUS);
 }
 
 /* || HEADER */
@@ -74,7 +116,7 @@ img {
     z-index: 1000;
     width: 100%;
     padding: 0.625rem 1.25rem;
-    background: linear-gradient(to bottom, #1F140D, #291D16);
+    background: var(--HEADER-BGIMAGE-SM);
 }
 
 .logo-container {
@@ -97,10 +139,9 @@ img {
 }
 
 .header__h1 {
-    font-family: "Fira Sans Condensed", sans-serif;
+    font-family: var(--FF-HEADINGS);
     font-size: 1.5rem;
     font-weight: 500;
-    color: #f9f6ed;
 }
 
 .header__ul {
@@ -115,7 +156,7 @@ img {
     height: 100vh;
     padding: 4.5rem 2.5rem 0;
     list-style: none;
-    background-color: #f9f6ed;
+    background-color: var(--NAV-BGCOLOR);
     transition: right 0.15s ease-in-out;
 }
 
@@ -134,25 +175,24 @@ img {
 .header__nav a {
     display: block;
     font-weight: 600;
-    color: #101010;
+    color: var(--NAV-COLOR);
     text-decoration: none;
     transition: all 0.2s ease-in-out;
 }
 
 .header__nav a:focus-visible {
     border-radius: 1px;
-    color: hsl(23, 35%, 65%);
     outline: 3px solid hsl(23, 35%, 52%);
     outline-offset: 12px;
 }
 
 .header__nav a:hover,
 .header__nav a:focus-visible {
-    color: hsl(23, 35%, 65%);
+    color: var(--LINK-HOVER-SM);
 }
 
 .header__nav a:active {
-    color: hsl(23, 35%, 65%);
+    color: var(--LINK-ACTIVE);
     transform: scale(0.97);
 }
 
@@ -164,12 +204,13 @@ img {
     justify-content: center;
     cursor: pointer;
     font-family: "Material Symbols Outlined";
-    font-size: 32px;
+    font-size: 2rem;
     line-height: 1;
+    transition: all 0.3s ease-in-out;
 }
 
 #menu-btn {
-    color: #f9f6ed;
+    color: var(--BUTTON-COLOR);
 }
 
 #close-menu-btn {
@@ -179,11 +220,20 @@ img {
     z-index: 1002;
     display: none;
     visibility: hidden;
+    color: var(--NAV-CLOSE-BUTTON-COLOR);
 }
 
 .show-mobile-menu #close-menu-btn {
     display: block;
     visibility: visible;
+}
+
+#menu-btn:hover {
+    color: var(--BUTTON-HOVER);
+}
+
+#close-menu-btn:hover {
+    color: var(--NAV-CLOSE-BUTTON-HOVER);
 }
 
 #menu-btn:focus-visible,
@@ -195,6 +245,11 @@ img {
 
 #close-menu-btn:focus-visible {
     border-radius: 50%;
+}
+
+#menu-btn:active,
+#close-menu-btn:active {
+    transform: scale(0.9);
 }
 
 /* || MAIN */
@@ -214,7 +269,7 @@ img {
     height: auto;
     margin: 5rem auto;
     text-align: center;
-    color: #f9f6ed;
+    color: #F9F6ED;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeIn 1s ease-out forwards;
@@ -233,7 +288,7 @@ img {
     width: 260px;
     height: auto;
     margin: 0 auto;
-    border-radius: 4px;
+    border-radius: var(--BORDER-RADIUS);
 }
 
 .article__h2 {
@@ -252,10 +307,10 @@ img {
     margin-top: 1rem;
     padding: 0.625rem 1.25rem;
     border: none;
-    border-radius: 4px;
+    border-radius: var(--BORDER-RADIUS);
     font-size: 1rem;
     font-weight: 500;
-    background: #f9f6ed;
+    background: var(--BUTTON-COLOR);
     transition: all 0.3s ease-in-out;
     outline: none;
     cursor: pointer;
@@ -263,14 +318,14 @@ img {
 
 .article__button:hover,
 .article__button:focus-visible {
-    color: #f9f6ed;
-    background: hsl(23, 35%, 52%);
+    color: var(--BUTTON-COLOR);
+    background: var(--BUTTON-HOVER);
     transform: translateY(-2px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
 }
 
 .article__button:active {
-    background-color: hsl(23, 35%, 35%);
+    background-color: var(--BUTTON-ACTIVE);
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -297,8 +352,8 @@ img {
     max-width: 240px;
     width: 100%;
     margin: 1rem;
-    border-radius: 4px;
-    background-color: #f9f6ed;
+    border-radius: var(--BORDER-RADIUS);
+    background-color: #F9F6ED;
     transition: all 0.3s ease-in-out;
 }
 
@@ -310,7 +365,7 @@ img {
 .card__div {
     display: flex;
     flex-direction: column;
-    color: #101010;
+    color: var(--CARD-COLOR);
 }
 
 .product {
@@ -337,7 +392,7 @@ img {
 
 .item__h3 {
     align-self: center;
-    font-family: "Fira Sans Condensed", sans-serif;
+    font-family: var(--FF-HEADINGS);
     font-size: 1.5rem;
     font-weight: 600;
     text-align: center;
@@ -402,7 +457,7 @@ img {
     width: 100%;
     padding: 0.5em;
     border-width: 2px;
-    border-radius: 4px;
+    border-radius: var(--BORDER-RADIUS);
 }
 
 .button-container {
@@ -417,22 +472,22 @@ img {
     border-radius: 4px;
     font-weight: bold;
     letter-spacing: 0.05em;
-    background: #f9f6ed;
+    background: var(--BUTTON-BGCOLOR);
     transition: all 0.2s ease-in-out;
     cursor: pointer;
 }
 
 .contact__button:hover,
 .contact__button:focus-visible {
-    color: #f9f6ed;
-    background-color: hsl(23, 35%, 60%);
+    color: var(--BUTTON-COLOR);
+    background-color: var(--BUTTON-HOVER);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
     transform: translateY(-2px);
 }
 
 .contact__button:active {
-    color: #f9f6ed;
-    background-color: hsl(23, 35%, 35%);
+    color: var(--BUTTON-COLOR);
+    background-color: var(--BUTTON-ACTIVE);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transform: translateY(0);
 }
@@ -507,7 +562,7 @@ img {
 
     .header {
         padding: 1rem 6rem;
-        background: linear-gradient(to bottom, #1F140D, #32241C);
+        background: var(--HEADER-BGIMAGE-L);
     }
 
     .header__nav {
@@ -531,16 +586,17 @@ img {
     }
 
     .header__nav a {
-        color: #f9f6ed;
+        color: var(--LINK-COLOR);
     }
 
     .header__nav a:hover,
     .header__nav a:focus-visible {
+        color: var(--LINK-HOVER-L);
         transform: scale(1.1);
     }
 
     .header__nav a:active {
-        transform: scale(0.9);
+        transform: scale(0.97);
     }
 
     .main {
