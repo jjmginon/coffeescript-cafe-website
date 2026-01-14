@@ -83,7 +83,7 @@ html {
 body {
     min-height: 100vh;
     font-family: var(--FF);
-    font-size-adjust: 0.5;
+    line-height: 1.5;
     color: var(--FONT-COLOR);
     background: linear-gradient(to bottom, var(--BODY-BGCOLOR), var(--BODY-BGCOLOR-FADE));
     background-repeat: no-repeat;
@@ -385,7 +385,7 @@ img {
 
 .item {
     display: grid;
-    grid-template-rows: 60px 1fr 40px;
+    grid-template-rows: 40px 1fr 100px;
     height: 100%;
     padding: 1rem;
 }
@@ -407,7 +407,7 @@ img {
 
 .item__p.price {
     align-self: center;
-    margin-top: 1rem;
+    margin-top: 4rem;
     font-size: 1.25rem;
     font-weight: 700;
     text-align: center;
