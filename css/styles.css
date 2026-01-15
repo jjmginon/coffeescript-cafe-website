@@ -318,6 +318,9 @@ img {
 
 .article__button:hover,
 .article__button:focus-visible {
+    outline: 3px solid hsl(23, 35%, 52%);
+    outline-offset: 4px;
+    border-radius: var(--BORDER-RADIUS);
     color: var(--BUTTON-COLOR);
     background: var(--BUTTON-HOVER);
     transform: translateY(-2px);
