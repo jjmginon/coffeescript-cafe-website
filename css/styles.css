@@ -198,14 +198,20 @@ img {
 
 #menu-btn,
 #close-menu-btn {
-    all: unset;
-    display: block;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
     font-family: "Material Symbols Outlined";
     font-size: 2rem;
     line-height: 1;
+    color: inherit;
+    border-radius: 0;
+    cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
 
