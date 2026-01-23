@@ -81,6 +81,8 @@ html {
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
     font-family: var(--FF);
     line-height: 1.5;
@@ -263,7 +265,7 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    flex: 1;
     padding: 0 2.5rem;
     opacity: 1;
     margin: 3.75rem auto 2rem;
@@ -567,8 +569,6 @@ img {
 /* LARGER SCREENS */
 @media screen and (min-width: 768px) {
     body {
-        display: flex;
-        flex-direction: column;
         padding: 0 4rem;
     }
 
@@ -614,7 +614,6 @@ img {
     .main {
         align-items: stretch;
         min-height: auto;
-        flex: 1;
     }
 
     .home .main__article {
