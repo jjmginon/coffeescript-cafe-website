@@ -88,9 +88,6 @@ body {
     line-height: 1.5;
     color: var(--FONT-COLOR);
     background: var(--BODY-BGIMAGE);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
 }
 
 body::before {
