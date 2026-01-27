@@ -60,6 +60,9 @@ textarea {
 
     /* BORDERS */
     --BORDER-RADIUS: 4px;
+
+    /* TRANSITIONS */
+    --TRANSITION: all 0.3s ease-in-out;
 }
 
 /* || UTILITY CLASSES */
@@ -210,7 +213,7 @@ img {
     color: inherit;
     border-radius: 0;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: var(--TRANSITION);
 }
 
 #menu-btn {
@@ -314,7 +317,7 @@ img {
     font-size: 1rem;
     font-weight: 500;
     background: var(--BUTTON-COLOR);
-    transition: all 0.3s ease-in-out;
+    transition: var(--TRANSITION);
     outline: none;
     cursor: pointer;
 }
@@ -362,7 +365,7 @@ img {
     margin: 1rem;
     border-radius: var(--BORDER-RADIUS);
     background-color: #F9F6ED;
-    transition: all 0.3s ease-in-out;
+    transition: var(--TRANSITION);
 }
 
 .container__div:hover,
