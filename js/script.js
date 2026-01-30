@@ -51,3 +51,35 @@ document.addEventListener("keydown", (e) => {
         menuBtn.focus();
     }
 });
+
+// ===== GLOBAL FOCUS TRAP FOR MOBILE MENU =====
+const navContainer = document.querySelector(".nav-container");
+const focusableSelectors = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+function trapFocus(e) {
+    if (!header.classList.contains("show-mobile-menu")) return;
+
+    const focusableElements = navContainer.querySelectorAll(focusableSelectors);
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    // If focus is outside the navContainer, bring it back in
+    if (!navContainer.contains(document.activeElement)) {
+        e.preventDefault();
+        firstElement.focus();
+        return;
+    }
+
+    // Handle cycling inside the menu
+    if (e.key === "Tab") {
+        if (e.shiftKey && document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+        }
+    }
+}
+
+document.addEventListener("keydown", trapFocus);
