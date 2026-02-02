@@ -33,8 +33,9 @@ function toggleBackToTop() {
 }
 
 if (backToTop) {
-    window.addEventListener("scroll", toggleBackToTop);
-    window.addEventListener("resize", toggleBackToTop);
+    // Use throttle for smoother performance
+    window.addEventListener("scroll", throttle(toggleBackToTop, 200));
+    window.addEventListener("resize", throttle(toggleBackToTop, 200));
 
     backToTop.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -60,6 +61,8 @@ function trapFocus(e) {
     if (!header.classList.contains("show-mobile-menu")) return;
 
     const focusableElements = navContainer.querySelectorAll(focusableSelectors);
+    if (focusableElements.length === 0) return;
+
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
 
@@ -83,3 +86,15 @@ function trapFocus(e) {
 }
 
 document.addEventListener("keydown", trapFocus);
+
+// ===== THROTTLE UTILITY =====
+function throttle(func, limit = 200) {
+    let inThrottle;
+    return function (...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
