@@ -33,9 +33,11 @@ function toggleBackToTop() {
 }
 
 if (backToTop) {
-    // Use throttle for smoother performance
-    window.addEventListener("scroll", throttle(toggleBackToTop, 200));
-    window.addEventListener("resize", throttle(toggleBackToTop, 200));
+    // Hybrid approach: throttle for responsiveness, debounce for accuracy
+    window.addEventListener("scroll", throttle(toggleBackToTop, 150));
+    window.addEventListener("scroll", debounce(toggleBackToTop, 200));
+    window.addEventListener("resize", throttle(toggleBackToTop, 150));
+    window.addEventListener("resize", debounce(toggleBackToTop, 200));
 
     backToTop.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -96,5 +98,14 @@ function throttle(func, limit = 200) {
             inThrottle = true;
             setTimeout(() => inThrottle = false, limit);
         }
+    };
+}
+
+// ===== DEBOUNCE UTILITY =====
+function debounce(func, delay = 200) {
+    let timeoutId;
+    return function (...args) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => func.apply(this, args), delay);
     };
 }
