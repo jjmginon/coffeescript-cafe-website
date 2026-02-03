@@ -564,6 +564,33 @@ img {
     }
 }
 
+/* || REDUCED MOTION SUPPORT */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    /* Disable transitions and animations globally */
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    /* Specific overrides */
+    #backToTop {
+        transition: none;
+    }
+
+    .main__article {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
 /* || MEDIA QUERIES */
 
 /* LARGER SCREENS */
