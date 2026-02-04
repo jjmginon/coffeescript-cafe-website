@@ -4,10 +4,14 @@ const menuBtn = document.querySelector("#menu-btn");
 const closeMenuBtn = document.querySelector("#close-menu-btn");
 const firstNavLink = document.querySelector("#primary-nav a");
 
+function updateMenuState(isOpen) {
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
+    closeMenuBtn.setAttribute("aria-expanded", String(isOpen));
+}
+
 menuBtn.addEventListener("click", () => {
     const isOpen = header.classList.toggle("show-mobile-menu");
-
-    menuBtn.setAttribute("aria-expanded", String(isOpen));
+    updateMenuState(isOpen);
 
     if (isOpen && firstNavLink) {
         firstNavLink.focus(); // move focus into the menu
@@ -16,7 +20,7 @@ menuBtn.addEventListener("click", () => {
 
 closeMenuBtn.addEventListener("click", () => {
     header.classList.remove("show-mobile-menu");
-    menuBtn.setAttribute("aria-expanded", "false");
+    updateMenuState(false);
     menuBtn.focus();
 });
 
@@ -50,7 +54,7 @@ if (backToTop) {
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && header.classList.contains("show-mobile-menu")) {
         header.classList.remove("show-mobile-menu");
-        menuBtn.setAttribute("aria-expanded", "false");
+        updateMenuState(false);
         menuBtn.focus();
     }
 });
