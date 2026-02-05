@@ -72,13 +72,6 @@ function trapFocus(e) {
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
 
-    // If focus is outside the navContainer, bring it back in
-    if (!navContainer.contains(document.activeElement)) {
-        e.preventDefault();
-        firstElement.focus();
-        return;
-    }
-
     // Handle cycling inside the menu
     if (e.key === "Tab") {
         if (e.shiftKey && document.activeElement === firstElement) {
