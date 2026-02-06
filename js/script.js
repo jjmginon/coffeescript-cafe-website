@@ -37,11 +37,10 @@ function toggleBackToTop() {
 }
 
 if (backToTop) {
-    // Hybrid approach: throttle for responsiveness, debounce for accuracy
-    window.addEventListener("scroll", throttle(toggleBackToTop, 150));
-    window.addEventListener("scroll", debounce(toggleBackToTop, 200));
-    window.addEventListener("resize", throttle(toggleBackToTop, 150));
-    window.addEventListener("resize", debounce(toggleBackToTop, 200));
+    const optimizedToggle = throttleDebounce(toggleBackToTop, 150, 200);
+
+    window.addEventListener("scroll", optimizedToggle);
+    window.addEventListener("resize", optimizedToggle);
 
     backToTop.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -86,23 +85,21 @@ function trapFocus(e) {
 
 document.addEventListener("keydown", trapFocus);
 
-// ===== THROTTLE UTILITY =====
-function throttle(func, limit = 200) {
-    let inThrottle;
+// ===== HYBRID THROTTLE + DEBOUNCE UTILITY =====
+function throttleDebounce(func, throttleLimit = 150, debounceDelay = 200) {
+    let inThrottle = false;
+    let timeoutId;
+
     return function (...args) {
+        // Throttle: run immediately if not in throttle window
         if (!inThrottle) {
             func.apply(this, args);
             inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
+            setTimeout(() => inThrottle = false, throttleLimit);
         }
-    };
-}
 
-// ===== DEBOUNCE UTILITY =====
-function debounce(func, delay = 200) {
-    let timeoutId;
-    return function (...args) {
+        // Debounce: schedule another run after user stops scrolling/resizing
         clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => func.apply(this, args), delay);
+        timeoutId = setTimeout(() => func.apply(this, args), debounceDelay);
     };
 }
