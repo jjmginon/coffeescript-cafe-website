@@ -4,10 +4,10 @@ const menuBtn = document.querySelector("#menu-btn");
 const closeMenuBtn = document.querySelector("#close-menu-btn");
 const firstNavLink = document.querySelector("#primary-nav a");
 
-function updateMenuState(isOpen) {
+const updateMenuState = (isOpen) => {
     menuBtn.setAttribute("aria-expanded", String(isOpen));
     closeMenuBtn.setAttribute("aria-expanded", String(isOpen));
-}
+};
 
 menuBtn.addEventListener("click", () => {
     const isOpen = header.classList.toggle("show-mobile-menu");
@@ -27,14 +27,14 @@ closeMenuBtn.addEventListener("click", () => {
 // ===== BACK-TO-TOP BUTTON VISIBILITY AND SCROLL BEHAVIOR =====
 const backToTop = document.getElementById("backToTop");
 
-function toggleBackToTop() {
+const toggleBackToTop = () => {
     if (!backToTop) return;
 
     const pageHeight = document.body.scrollHeight;
     const threshold = Math.max(100, pageHeight * 0.25);
 
     backToTop.classList.toggle("show", window.scrollY > threshold);
-}
+};
 
 if (backToTop) {
     const optimizedToggle = throttleDebounce(toggleBackToTop, 150, 200);
@@ -62,7 +62,7 @@ document.addEventListener("keydown", (e) => {
 const navContainer = document.querySelector(".nav-container");
 const focusableSelectors = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-function trapFocus(e) {
+const trapFocus = (e) => {
     if (!header.classList.contains("show-mobile-menu")) return;
 
     const focusableElements = navContainer.querySelectorAll(focusableSelectors);
@@ -81,16 +81,16 @@ function trapFocus(e) {
             firstElement.focus();
         }
     }
-}
+};
 
 document.addEventListener("keydown", trapFocus);
 
 // ===== HYBRID THROTTLE + DEBOUNCE UTILITY =====
-function throttleDebounce(func, throttleLimit = 150, debounceDelay = 200) {
+const throttleDebounce = (func, throttleLimit = 150, debounceDelay = 200) => {
     let inThrottle = false;
     let timeoutId;
 
-    return function (...args) {
+    return (...args) => {
         // Throttle: run immediately if not in throttle window
         if (!inThrottle) {
             func.apply(this, args);
@@ -102,4 +102,4 @@ function throttleDebounce(func, throttleLimit = 150, debounceDelay = 200) {
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => func.apply(this, args), debounceDelay);
     };
-}
+};
