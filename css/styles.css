@@ -282,6 +282,22 @@ img {
     animation: fadeIn 1s ease-out forwards;
 }
 
+.main__article:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.main__article:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.main__article:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.main__article:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
 .main__article h2,
 .main__article p {
     max-width: 100%;
