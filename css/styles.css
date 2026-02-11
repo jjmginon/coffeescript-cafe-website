@@ -35,7 +35,7 @@ textarea {
 
     --BUTTON-COLOR: #F9F6ED;
     --BUTTON-BGCOLOR: #F9F6ED;
-    --BUTTON-HOVER: hsl(23, 35%, 60%);
+    --BUTTON-HOVER: hsl(23, 35%, 45%);
     --BUTTON-ACTIVE: hsl(23, 35%, 35%);
 
     --CARD-COLOR: #101010;
@@ -49,14 +49,14 @@ textarea {
     --HEADER-BGIMAGE-L: linear-gradient(to bottom, var(--HEADER-BGCOLOR), var(--HEADER-BGCOLOR-FADE-L));
 
     --LINK-COLOR: #F9F6ED;
-    --LINK-HOVER-SM: hsl(23, 35%, 35%);
-    --LINK-HOVER-L: hsl(23, 35%, 65%);
+    --LINK-HOVER-SM: hsl(23, 35%, 30%);
+    --LINK-HOVER-L: hsl(23, 35%, 75%);
     --LINK-ACTIVE: hsl(23, 35%, 35%);
 
     --NAV-BGCOLOR: #F9F6ED;
     --NAV-COLOR: #101010;
     --NAV-CLOSE-BUTTON-COLOR: #101010;
-    --NAV-CLOSE-BUTTON-HOVER: hsl(23, 35%, 35%);
+    --NAV-CLOSE-BUTTON-HOVER: hsl(23, 35%, 25%);
 
     /* BORDERS */
     --BORDER-RADIUS: 4px;
