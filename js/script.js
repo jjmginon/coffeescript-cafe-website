@@ -3,10 +3,12 @@ const header = document.querySelector("header");
 const menuBtn = document.querySelector("#menu-btn");
 const closeMenuBtn = document.querySelector("#close-menu-btn");
 const firstNavLink = document.querySelector("#primary-nav a");
+const primaryNav = document.querySelector("#primary-nav");
 
 const updateMenuState = (isOpen) => {
     menuBtn.setAttribute("aria-expanded", String(isOpen));
     closeMenuBtn.setAttribute("aria-expanded", String(isOpen));
+    primaryNav.setAttribute("aria-hidden", String(!isOpen));
 };
 
 menuBtn.addEventListener("click", () => {
