@@ -65,15 +65,25 @@ const navContainer = document.querySelector(".nav-container");
 const focusableSelectors = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 const trapFocus = (e) => {
-    if (!header.classList.contains("show-mobile-menu")) return;
+    // Only run if menu is open and visible
+    if (!header.classList.contains("show-mobile-menu") || primaryNav.getAttribute("aria-hidden") === "true") {
+        return;
+    }
 
     const focusableElements = navContainer.querySelectorAll(focusableSelectors);
-    if (focusableElements.length === 0) return;
+
+    // If no focusable elements, return focus to menu button
+    if (focusableElements.length === 0) {
+        if (e.key === "Tab") {
+            e.preventDefault();
+            menuBtn.focus();
+        }
+        return;
+    }
 
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
 
-    // Handle cycling inside the menu
     if (e.key === "Tab") {
         if (e.shiftKey && document.activeElement === firstElement) {
             e.preventDefault();
