@@ -43,10 +43,8 @@ const toggleBackToTop = () => {
 };
 
 if (backToTop) {
-    const optimizedToggle = throttleDebounce(toggleBackToTop, 150, 200);
-
-    window.addEventListener("scroll", optimizedToggle);
-    window.addEventListener("resize", optimizedToggle);
+    window.addEventListener("scroll", toggleBackToTop);
+    window.addEventListener("resize", toggleBackToTop);
 
     backToTop.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
