@@ -101,18 +101,19 @@ document.addEventListener("keydown", trapFocus);
 
 // ===== HYBRID THROTTLE + DEBOUNCE UTILITY =====
 const throttleDebounce = (func, throttleLimit = 150, debounceDelay = 200) => {
-    let inThrottle = false;
+    let lastCall = 0;
     let timeoutId;
 
     return (...args) => {
-        // Throttle: run immediately if not in throttle window
-        if (!inThrottle) {
+        const now = Date.now();
+
+        // Throttle: run if enough time has passed
+        if (now - lastCall >= throttleLimit) {
             func.apply(this, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, throttleLimit);
+            lastCall = now;
         }
 
-        // Debounce: schedule another run after user stops scrolling/resizing
+        // Debounce: always schedule a final run
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => func.apply(this, args), debounceDelay);
     };
