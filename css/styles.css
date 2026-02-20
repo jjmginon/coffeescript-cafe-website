@@ -588,7 +588,6 @@ img {
         scroll-behavior: auto;
     }
 
-    /* Disable transitions and animations globally */
     *,
     *::before,
     *::after {
@@ -602,9 +601,9 @@ img {
     }
 
     .main__article {
-        animation: none;
-        opacity: 1;
-        transform: none;
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
 
