@@ -10,8 +10,8 @@ const updateMenuState = (isOpen) => {
     closeMenuBtn.setAttribute("aria-expanded", String(isOpen));
     primaryNav.setAttribute("aria-hidden", String(!isOpen));
 
-    // Update aria-labels for clarity
-    menuBtn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    // FIX: Keep menuBtn as "Open menu" only
+    menuBtn.setAttribute("aria-label", "Open menu");
     closeMenuBtn.setAttribute("aria-label", "Close menu");
 };
 
