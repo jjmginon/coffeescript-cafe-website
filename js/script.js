@@ -13,6 +13,16 @@ const updateMenuState = (isOpen) => {
     // FIX: Keep menuBtn as "Open menu" only
     menuBtn.setAttribute("aria-label", "Open menu");
     closeMenuBtn.setAttribute("aria-label", "Close menu");
+
+    // NEW: toggle tabindex for nav links
+    const navLinks = primaryNav.querySelectorAll("a");
+    navLinks.forEach(link => {
+        if (isOpen) {
+            link.removeAttribute("tabindex"); // restore natural tab order
+        } else {
+            link.setAttribute("tabindex", "-1"); // remove from tab order
+        }
+    });
 };
 
 menuBtn.addEventListener("click", () => {
