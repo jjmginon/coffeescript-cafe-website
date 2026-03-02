@@ -128,3 +128,18 @@ const throttleDebounce = (func, throttleLimit = 150, debounceDelay = 200) => {
         timeoutId = setTimeout(() => func.apply(this, args), debounceDelay);
     };
 };
+
+// ===== MENU STATE SYNC ON RESIZE =====
+const syncMenuStateOnResize = () => {
+    if (window.innerWidth >= 768) {
+        // Desktop view: nav is always visible
+        header.classList.remove("show-mobile-menu");
+        updateMenuState(true); // force nav to be accessible
+    } else {
+        // Mobile view: nav should be hidden until opened
+        updateMenuState(false);
+    }
+};
+
+window.addEventListener("resize", syncMenuStateOnResize);
+window.addEventListener("load", syncMenuStateOnResize);
