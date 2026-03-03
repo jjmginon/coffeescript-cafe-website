@@ -134,12 +134,13 @@ const syncMenuStateOnResize = () => {
     if (window.innerWidth >= 768) {
         // Desktop view: nav is always visible
         header.classList.remove("show-mobile-menu");
-        updateMenuState(true); // force nav to be accessible
+        updateMenuState(true);
     } else {
         // Mobile view: nav should be hidden until opened
         updateMenuState(false);
     }
 };
 
-window.addEventListener("resize", syncMenuStateOnResize);
+// Use throttleDebounce to optimize resize handling
+window.addEventListener("resize", throttleDebounce(syncMenuStateOnResize));
 window.addEventListener("load", syncMenuStateOnResize);
