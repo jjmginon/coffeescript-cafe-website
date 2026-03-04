@@ -132,11 +132,13 @@ const throttleDebounce = (func, throttleLimit = 150, debounceDelay = 200) => {
 // ===== MENU STATE SYNC ON RESIZE =====
 const syncMenuStateOnResize = () => {
     if (window.innerWidth >= 768) {
-        // Desktop view: nav is always visible
+        // Desktop view: nav is always visible, no ARIA toggling needed
         header.classList.remove("show-mobile-menu");
-        updateMenuState(true);
+        menuBtn.setAttribute("aria-expanded", "false");
+        closeMenuBtn.setAttribute("aria-expanded", "false");
+        primaryNav.removeAttribute("aria-hidden");
     } else {
-        // Mobile view: nav should be hidden until opened
+        // Mobile view: nav hidden until opened
         updateMenuState(false);
     }
 };
