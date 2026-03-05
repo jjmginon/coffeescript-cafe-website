@@ -30,13 +30,17 @@ menuBtn.addEventListener("click", () => {
     updateMenuState(isOpen);
 
     if (isOpen && firstNavLink) {
+        enableFocusTrap();
         firstNavLink.focus(); // move focus into the menu
+    } else {
+        disableFocusTrap();
     }
 });
 
 closeMenuBtn.addEventListener("click", () => {
     header.classList.remove("show-mobile-menu");
     updateMenuState(false);
+    disableFocusTrap();
     menuBtn.focus();
 });
 
@@ -68,46 +72,35 @@ document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && header.classList.contains("show-mobile-menu")) {
         header.classList.remove("show-mobile-menu");
         updateMenuState(false);
+        disableFocusTrap();
         menuBtn.focus();
     }
 });
 
-// ===== GLOBAL FOCUS TRAP FOR MOBILE MENU =====
+// ===== SCOPED FOCUS TRAP FOR MOBILE MENU =====
 const navContainer = document.querySelector(".nav-container");
 const focusableSelectors = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 const trapFocus = (e) => {
-    // Only run if menu is open and visible
-    if (!header.classList.contains("show-mobile-menu") || primaryNav.getAttribute("aria-hidden") === "true") {
-        return;
-    }
+    if (e.key !== "Tab") return;
 
     const focusableElements = navContainer.querySelectorAll(focusableSelectors);
-
-    // If no focusable elements, return focus to menu button
-    if (focusableElements.length === 0) {
-        if (e.key === "Tab") {
-            e.preventDefault();
-            menuBtn.focus();
-        }
-        return;
-    }
+    if (focusableElements.length === 0) return;
 
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
 
-    if (e.key === "Tab") {
-        if (e.shiftKey && document.activeElement === firstElement) {
-            e.preventDefault();
-            lastElement.focus();
-        } else if (!e.shiftKey && document.activeElement === lastElement) {
-            e.preventDefault();
-            firstElement.focus();
-        }
+    if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement.focus();
+    } else if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement.focus();
     }
 };
 
-document.addEventListener("keydown", trapFocus);
+const enableFocusTrap = () => document.addEventListener("keydown", trapFocus);
+const disableFocusTrap = () => document.removeEventListener("keydown", trapFocus);
 
 // ===== HYBRID THROTTLE + DEBOUNCE UTILITY =====
 const throttleDebounce = (func, throttleLimit = 150, debounceDelay = 200) => {
@@ -115,7 +108,7 @@ const throttleDebounce = (func, throttleLimit = 150, debounceDelay = 200) => {
     let timeoutId;
 
     return (...args) => {
-        const now = Date.now();
+        const now = performance.now(); // more precise timing
 
         // Throttle: run if enough time has passed
         if (now - lastCall >= throttleLimit) {
@@ -137,6 +130,7 @@ const syncMenuStateOnResize = () => {
         menuBtn.setAttribute("aria-expanded", "false");
         closeMenuBtn.setAttribute("aria-expanded", "false");
         primaryNav.removeAttribute("aria-hidden");
+        disableFocusTrap();
     } else {
         // Mobile view: nav hidden until opened
         updateMenuState(false);
