@@ -50,8 +50,8 @@ const backToTop = document.getElementById("backToTop");
 const toggleBackToTop = () => {
     if (!backToTop) return;
 
-    const pageHeight = document.body.scrollHeight;
-    const threshold = Math.max(100, pageHeight * 0.25);
+    // Use fixed threshold for consistency
+    const threshold = 200; // pixels scrolled before showing button
 
     backToTop.classList.toggle("show", window.scrollY > threshold);
 };
