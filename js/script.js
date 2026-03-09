@@ -108,7 +108,7 @@ const throttleDebounce = (func, throttleLimit = 150, debounceDelay = 200) => {
     let timeoutId;
 
     return (...args) => {
-        const now = performance.now(); // more precise timing
+        const now = performance.now(); // swapped from Date.now()
 
         // Throttle: run if enough time has passed
         if (now - lastCall >= throttleLimit) {
