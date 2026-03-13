@@ -109,6 +109,15 @@ img {
     border-radius: var(--BORDER-RADIUS);
 }
 
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid hsl(23, 35%, 52%);
+    outline-offset: 4px;
+    border-radius: var(--BORDER-RADIUS);
+}
+
 /* || HEADER */
 .header {
     position: fixed;
@@ -187,12 +196,6 @@ img {
     transition: all 0.2s ease-in-out;
 }
 
-.header__nav a:focus-visible {
-    border-radius: 1px;
-    outline: 3px solid hsl(23, 35%, 52%);
-    outline-offset: 12px;
-}
-
 .header__nav a:hover,
 .header__nav a:focus-visible {
     color: var(--LINK-HOVER-SM);
@@ -252,7 +255,6 @@ img {
 #menu-btn:focus-visible,
 #close-menu-btn:focus-visible {
     padding: 0.25rem;
-    outline: 3px solid hsl(23, 35%, 52%);
     outline-offset: 6px;
 }
 
@@ -350,12 +352,6 @@ img {
     background: var(--BUTTON-HOVER);
     transform: translateY(-2px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
-}
-
-.article__button:focus-visible {
-    outline: 3px solid hsl(23, 35%, 52%);
-    outline-offset: 4px;
-    border-radius: var(--BORDER-RADIUS);
 }
 
 .article__button:active {
@@ -567,7 +563,6 @@ img {
 #backToTop:focus-visible {
     border-radius: 50%;
     background-color: rgba(249, 246, 237, 0.2);
-    outline: 3px solid hsl(23, 35%, 52%);
     outline-offset: 4px;
 }
 
