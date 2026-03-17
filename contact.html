@@ -99,7 +99,8 @@
                     <p class="contact__p">
                         <label class="contact__label" for="email">Email:</label>
                         <input class="contact__input" type="email" name="email" id="email" placeholder="Your email"
-                            required="" autocomplete="email">
+                            required="" autocomplete="email" aria-describedby="emailError">
+                        <span id="emailError" class="sr-only">Please enter a valid email address</span>
                     </p>
                     <p class="contact__p">
                         <label class="contact__label" for="message">Your Message:</label>
