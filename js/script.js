@@ -7,14 +7,13 @@ const primaryNav = document.querySelector("#primary-nav");
 
 const updateMenuState = (isOpen) => {
     menuBtn.setAttribute("aria-expanded", String(isOpen));
-    closeMenuBtn.setAttribute("aria-expanded", String(isOpen));
     primaryNav.setAttribute("aria-hidden", String(!isOpen));
 
-    // FIX: Keep menuBtn as "Open menu" only
+    // Keep menuBtn as "Open menu" only
     menuBtn.setAttribute("aria-label", "Open menu");
     closeMenuBtn.setAttribute("aria-label", "Close menu");
 
-    // NEW: toggle tabindex for nav links
+    // Toggle tabindex for nav links
     const navLinks = primaryNav.querySelectorAll("a");
     navLinks.forEach(link => {
         if (isOpen) {
