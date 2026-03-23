@@ -78,6 +78,31 @@ textarea {
     white-space: nowrap;
 }
 
+.btn {
+    padding: 0.625rem 1.25rem;
+    border: none;
+    border-radius: var(--BORDER-RADIUS);
+    font-size: 1rem;
+    font-weight: 500;
+    background: var(--BUTTON-BGCOLOR);
+    transition: var(--TRANSITION);
+    cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus-visible {
+    color: var(--BUTTON-COLOR);
+    background: var(--BUTTON-HOVER);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.btn:active {
+    background-color: var(--BUTTON-ACTIVE);
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 /* || GENERAL STYLES */
 html {
     scroll-behavior: smooth;
@@ -335,29 +360,6 @@ textarea:focus-visible {
 
 .article__button {
     margin-top: 1rem;
-    padding: 0.625rem 1.25rem;
-    border: none;
-    border-radius: var(--BORDER-RADIUS);
-    font-size: 1rem;
-    font-weight: 500;
-    background: var(--BUTTON-COLOR);
-    transition: var(--TRANSITION);
-    outline: none;
-    cursor: pointer;
-}
-
-.article__button:hover,
-.article__button:focus-visible {
-    color: var(--BUTTON-COLOR);
-    background: var(--BUTTON-HOVER);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
-}
-
-.article__button:active {
-    background-color: var(--BUTTON-ACTIVE);
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* || MENU */
@@ -497,29 +499,7 @@ textarea:focus-visible {
 
 .contact__button {
     width: 100%;
-    padding: 0.75em 1.25em;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
     letter-spacing: 0.05em;
-    background: var(--BUTTON-BGCOLOR);
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-}
-
-.contact__button:hover,
-.contact__button:focus-visible {
-    color: var(--BUTTON-COLOR);
-    background-color: var(--BUTTON-HOVER);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
-    transform: translateY(-2px);
-}
-
-.contact__button:active {
-    color: var(--BUTTON-COLOR);
-    background-color: var(--BUTTON-ACTIVE);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transform: translateY(0);
 }
 
 .contact__button:disabled {
