@@ -62,7 +62,10 @@ textarea {
     --BORDER-RADIUS: 4px;
 
     /* TRANSITIONS */
-    --TRANSITION: all 0.3s ease-in-out;
+    --TRANSITION-BASE: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    --TRANSITION-COLOR: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    --TRANSITION-SHADOW: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    --TRANSITION-BG: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 /* || UTILITY CLASSES */
@@ -85,7 +88,7 @@ textarea {
     font-size: 1rem;
     font-weight: 500;
     background: var(--BUTTON-BGCOLOR);
-    transition: var(--TRANSITION);
+    transition: var(--TRANSITION-SHADOW), var(--TRANSITION-BG);
     cursor: pointer;
 }
 
@@ -218,7 +221,7 @@ textarea:focus-visible {
     font-weight: 600;
     color: var(--NAV-COLOR);
     text-decoration: none;
-    transition: all 0.2s ease-in-out;
+    transition: var(--TRANSITION-COLOR);
 }
 
 .header__nav a:hover,
@@ -247,7 +250,7 @@ textarea:focus-visible {
     color: inherit;
     border-radius: 0;
     cursor: pointer;
-    transition: var(--TRANSITION);
+    transition: var(--TRANSITION-COLOR);
 }
 
 #menu-btn {
@@ -385,7 +388,7 @@ textarea:focus-visible {
     margin: 1rem;
     border-radius: var(--BORDER-RADIUS);
     background-color: #F9F6ED;
-    transition: var(--TRANSITION);
+    transition: var(--TRANSITION-SHADOW);
 }
 
 .container__div:hover,
