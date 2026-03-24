@@ -30,7 +30,7 @@ textarea {
 
     /* COLORS */
     --BODY-BGCOLOR: #1F140D;
-    --BODY-BGCOLOR-FADE: #9B8074;
+    --BODY-BGCOLOR-FADE: #473933;
     --BODY-BGIMAGE: linear-gradient(to bottom, var(--BODY-BGCOLOR), var(--BODY-BGCOLOR-FADE));
 
     --BUTTON-COLOR: #F9F6ED;
