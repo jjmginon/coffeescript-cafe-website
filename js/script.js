@@ -46,13 +46,15 @@ closeMenuBtn.addEventListener("click", () => {
 // ===== BACK-TO-TOP BUTTON VISIBILITY AND SCROLL BEHAVIOR =====
 const backToTop = document.getElementById("backToTop");
 
+const CONFIG = {
+    BACK_TO_TOP_THRESHOLD: 200,
+    THROTTLE_LIMIT_MS: 150,
+    DEBOUNCE_DELAY_MS: 200,
+};
+
 const toggleBackToTop = () => {
     if (!backToTop) return;
-
-    // Use fixed threshold for consistency
-    const threshold = 200; // pixels scrolled before showing button
-
-    backToTop.classList.toggle("show", window.scrollY > threshold);
+    backToTop.classList.toggle("show", window.scrollY > CONFIG.BACK_TO_TOP_THRESHOLD);
 };
 
 if (backToTop) {
@@ -109,20 +111,18 @@ const navContainer = document.querySelector(".nav-container");
 const navFocusTrap = createFocusTrap(navContainer);
 
 // ===== HYBRID THROTTLE + DEBOUNCE UTILITY =====
-const throttleDebounce = (func, throttleLimit = 150, debounceDelay = 200) => {
+const throttleDebounce = (func, throttleLimit = CONFIG.THROTTLE_LIMIT_MS, debounceDelay = CONFIG.DEBOUNCE_DELAY_MS) => {
     let lastCall = 0;
     let timeoutId;
 
     return (...args) => {
-        const now = performance.now(); // swapped from Date.now()
+        const now = performance.now();
 
-        // Throttle: run if enough time has passed
         if (now - lastCall >= throttleLimit) {
             func.apply(this, args);
             lastCall = now;
         }
 
-        // Debounce: always schedule a final run
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => func.apply(this, args), debounceDelay);
     };
