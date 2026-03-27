@@ -1,5 +1,7 @@
 # CoffeeScript Café
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a43edff0-0691-41cb-bdec-3c94e1e5b783/deploy-status)](https://app.netlify.com/projects/coffeescript-cafe-website/deploys)
+
 CoffeeScript Café is a multi-page responsive café website inspired by the fusion of **code and coffee culture**.
 It showcases a fictional developer-themed café offering beverages like **Java Coffee**, **Tea++**, and **BubbleSort Milk Tea**.
 
